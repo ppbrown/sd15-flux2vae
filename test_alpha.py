@@ -2,6 +2,7 @@
 
 import torch
 from diffusers import StableDiffusionPipeline, DPMSolverMultistepScheduler
+import sys
 
 MODEL_DIR = "sd-flux2-alpha00"
 PROMPT = "A collie dog"
@@ -12,6 +13,10 @@ def main() -> int:
 #    device = "cuda" if torch.cuda.is_available() else "cpu"
     device = "cpu"
     dtype = torch.float16 if device == "cuda" else torch.float32
+
+    if len(sys.argv) > 1:
+        MODEL_DIR = sys.argv[1]
+        print("Using", MODEL_DIR)
 
     pipe = StableDiffusionPipeline.from_pretrained(
         MODEL_DIR, torch_dtype=dtype,
