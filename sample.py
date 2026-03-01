@@ -41,7 +41,9 @@ def main() -> int:
         device = "cpu"
     print("Using device:", device)
 
-    dtype = torch.float16 if device == "cuda" else torch.float32
+    #dtype = torch.float16 if device == "cuda" else torch.float32
+    # DO NOT do the above, it has overflow problems with sd15
+    dtype = torch.float32
 
     MODEL_DIR = args.dir
     print("Using", MODEL_DIR)
