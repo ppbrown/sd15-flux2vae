@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 
+"""
+Helpful util created primarily for checkpoint sampling while you are
+in the middle of a training run.
+This is why it defaults to device=cpu.
+However, when not doing a run, you can run it faster with
+  --cuda
+"""
+
 import argparse
 
 def parse_args():
